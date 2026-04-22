@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Order Success</title>
+
+  <style>
+    body {
+      background-color: #bfbfbf;
+      font-family: Arial;
+      text-align: center;
+    }
+
+    .container {
+      margin-top: 40px;
+    }
+
+    .header {
+      font-size: 20px;
+      margin-bottom: 10px;
+    }
+
+    .thank {
+      font-size: 18px;
+      margin-bottom: 20px;
+    }
+
+    .box {
+      background-color: #4f75b5;
+      color: white;
+      padding: 10px;
+      width: 200px;
+      margin: 10px auto;
+      border-radius: 8px;
+    }
+
+    .row {
+      display: flex;
+      justify-content: center;
+      gap: 50px;
+      margin: 10px;
+    }
+
+    .btn {
+      margin-top: 30px;
+      padding: 12px 30px;
+      border-radius: 10px;
+      border: none;
+      background-color: #4f75b5;
+      color: white;
+      cursor: pointer;
+    }
+  </style>
+</head>
+
+<body>
+
+<div class="container">
+
+  <div class="header">PopUp</div>
+  <div class="thank">THANK YOU 🎉</div>
+
+  <div class="box">Total Amount: ₹ <%= total %></div>
+
+  <div class="row">
+    <div class="box">Name: <%= order.name %></div>
+    <div class="box">Number: <%= order.number %></div>
+  </div>
+
+  <div class="row">
+    <div class="box">Email: <%= order.email %></div>
+    <div class="box">Payment: <%= order.payment %></div>
+  </div>
+
+  <div class="row">
+    <div class="box">Address: <%= order.address %></div>
+    <div class="box">State: <%= order.state %></div>
+  </div>
+
+  <div class="row">
+    <div class="box">City: <%= order.city %></div>
+    <div class="box">Pincode: <%= order.pincode %></div>
+  </div>
+
+  <a href="/user">
+    <button class="btn">Continue Shopping</button>
+  </a>
+
+</div>
+
+</body>
+</html>

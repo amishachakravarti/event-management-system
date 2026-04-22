@@ -1,0 +1,13 @@
+<h2>Update Status</h2>
+
+<form action="/orders/update/<%= order._id %>" method="POST">
+
+  <input type="radio" name="status" value="Received"> Received <br><br>
+
+  <input type="radio" name="status" value="Ready for Shipping"> Ready for Shipping <br><br>
+
+  <input type="radio" name="status" value="Out For Delivery"> Out For Delivery <br><br>
+
+  <button type="submit">Update</button>
+
+</form>

@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Update Status</title>
+
+  <style>
+    body {
+      background-color: #bfbfbf;
+      font-family: Arial;
+      text-align: center;
+      margin: 0;
+    }
+
+    .top {
+      display: flex;
+      justify-content: space-between;
+      padding: 20px;
+    }
+
+    .btn {
+      background-color: #4f75b5;
+      color: white;
+      padding: 10px 20px;
+      text-decoration: none;
+      border-radius: 8px;
+    }
+
+    .box {
+      background-color: #4f75b5;
+      color: white;
+      width: 400px;
+      margin: 80px auto;
+      padding: 30px;
+      border-radius: 30px;
+    }
+
+    .option {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin: 15px 0;
+      justify-content: center;
+    }
+
+    .submit-btn {
+      margin-top: 30px;
+      padding: 10px 30px;
+      border-radius: 10px;
+      border: none;
+      background-color: #4f75b5;
+      color: white;
+      cursor: pointer;
+    }
+  </style>
+</head>
+
+<body>
+
+<div class="top">
+  <a href="/admin/orders" class="btn">Home</a>
+  <a href="/logout" class="btn">LogOut</a>
+</div>
+
+<h2>Update</h2>
+
+<form action="/admin/order/update/<%= order._id %>" method="POST">
+
+  <div class="box">
+
+    <div class="option">
+      <input type="radio" name="status" value="Received" required>
+      <label>Recieved</label>
+    </div>
+
+    <div class="option">
+      <input type="radio" name="status" value="Ready for Shipping">
+      <label>Ready for Shipping</label>
+    </div>
+
+    <div class="option">
+      <input type="radio" name="status" value="Out For Delivery">
+      <label>Out For Delivery</label>
+    </div>
+
+  </div>
+
+  <button class="submit-btn">Update</button>
+
+</form>
+
+</body>
+</html>

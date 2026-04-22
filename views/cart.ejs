@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Cart</title>
+
+  <style>
+    body { background:#bfbfbf; font-family:Arial; text-align:center; }
+
+    .top { display:flex; justify-content:space-between; padding:20px; }
+
+    .btn { padding:10px 20px; border:2px solid green; border-radius:5px; }
+
+    .header {
+      background:#4f75b5;
+      color:white;
+      padding:10px;
+      width:300px;
+      margin:0 auto;
+      border-radius:5px;
+    }
+
+    .row {
+      display:flex;
+      justify-content:center;
+      gap:20px;
+      margin:20px;
+    }
+
+    .box {
+      background:#4f75b5;
+      color:white;
+      padding:20px;
+      border-radius:10px;
+      width:120px;
+    }
+  </style>
+</head>
+
+<body>
+
+<div class="top">
+  <a href="/user" class="btn">Home</a>
+  <a href="/vendors" class="btn">View Product</a>
+  <a href="/logout" class="btn">LogOut</a>
+</div>
+
+<div class="header">Shopping Cart</div>
+
+<!-- HEADERS -->
+<div class="row">
+  <div class="box">Image</div>
+  <div class="box">Name</div>
+  <div class="box">Price</div>
+  <div class="box">Qty</div>
+  <div class="box">Total</div>
+  <div class="box">Action</div>
+</div>
+
+<!-- DATA -->
+<% let grandTotal = 0; %>
+
+<% cartItems.forEach(item => { %>
+  <% let total = item.product.price * item.quantity; %>
+  <% grandTotal += total; %>
+
+  <div class="row">
+    <div class="box">
+      <img src="<%= item.product.image %>" width="50">
+    </div>
+
+    <div class="box"><%= item.product.name %></div>
+    <div class="box">₹ <%= item.product.price %></div>
+    <div class="box"><%= item.quantity %></div>
+    <div class="box">₹ <%= total %></div>
+
+    <div class="box">
+      <form action="/cart/remove/<%= item._id %>" method="POST">
+        <button>Remove</button>
+      </form>
+    </div>
+  </div>
+<% }) %>
+
+<!-- TOTAL -->
+<div class="row">
+  <div class="box">Grand Total</div>
+  <div class="box">₹ <%= grandTotal %></div>
+</div>
+
+<a href="/checkout"><button class="btn">Proceed to Checkout</button></a>
+
+</body>
+</html>

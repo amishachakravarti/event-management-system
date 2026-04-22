@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Add Product</title>
+
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial;
+      background-color: #bfbfbf;
+    }
+
+    .topbar {
+      background-color: #4f75b5;
+      padding: 15px;
+      color: white;
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .topbar a {
+      background-color: #d3d3d3;
+      padding: 8px 15px;
+      margin-left: 10px;
+      border-radius: 8px;
+      text-decoration: none;
+      color: black;
+    }
+
+    .container {
+      display: flex;
+      padding: 30px;
+      gap: 50px;
+    }
+
+    .form-box {
+      background-color: #4f75b5;
+      padding: 30px;
+      width: 350px;
+      border-radius: 5px;
+    }
+
+    .input {
+      width: 100%;
+      padding: 10px;
+      margin: 15px 0;
+      border-radius: 8px;
+      border: none;
+    }
+
+    .btn {
+      padding: 10px;
+      border-radius: 8px;
+      border: none;
+      background-color: #d3d3d3;
+      cursor: pointer;
+    }
+
+    .table {
+      flex: 1;
+    }
+
+    .row {
+      display: flex;
+      gap: 20px;
+      margin-bottom: 20px;
+    }
+
+    .box {
+      background-color: #4f75b5;
+      color: white;
+      padding: 15px;
+      border-radius: 5px;
+      text-align: center;
+      flex: 1;
+    }
+
+    .action-box {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .action-box button {
+      margin: 5px 0;
+      padding: 8px;
+    }
+  </style>
+</head>
+
+<body>
+
+<div class="topbar">
+  <div>Welcome <%= currentUser.username %></div>
+
+  <div>
+    <a href="/vendor/products">Product Status</a>
+    <a href="/vendor/add">Request Item</a>
+    <a href="#">View Product</a>
+    <a href="/logout">Log Out</a>
+  </div>
+</div>
+
+<div class="container">
+
+  <!-- LEFT FORM -->
+  <div class="form-box">
+    <form action="/vendor/add" method="POST">
+      <input type="text" name="name" placeholder="Product Name" class="input" required>
+      <input type="number" name="price" placeholder="Product Price" class="input" required>
+      <input type="text" name="image" placeholder="Product Image URL" class="input" required>
+
+      <button class="btn">Add Product</button>
+    </form>
+  </div>
+
+  <!-- RIGHT TABLE -->
+  <div class="table">
+
+    <div class="row">
+      <div class="box">Product Image</div>
+      <div class="box">Product Name</div>
+      <div class="box">Product Price</div>
+      <div class="box">Action</div>
+    </div>
+
+    <% products.forEach(p => { %>
+      <div class="row">
+        <div class="box">
+          <img src="<%= p.image %>" width="60">
+        </div>
+
+        <div class="box"><%= p.name %></div>
+        <div class="box">₹ <%= p.price %></div>
+
+        <div class="box action-box">
+          <form action="/vendor/delete/<%= p._id %>" method="POST">
+            <button>Delete</button>
+          </form>
+
+          <a href="/vendor/edit/<%= p._id %>">
+            <button>Update</button>
+          </a>
+        </div>
+      </div>
+    <% }) %>
+
+  </div>
+
+</div>
+
+</body>
+</html>

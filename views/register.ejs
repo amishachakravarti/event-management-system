@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Register</title>
+
+  <style>
+    body {
+      background-color: #4f75b5;
+      font-family: Arial, sans-serif;
+      text-align: center;
+      margin: 0;
+      padding: 0;
+    }
+
+    .header {
+      background-color: #d3d3d3;
+      padding: 20px;
+      margin: 30px auto;
+      width: 70%;
+      font-size: 22px;
+      font-weight: bold;
+      border-radius: 5px;
+    }
+
+    .container {
+      margin-top: 30px;
+    }
+
+    .row {
+      display: flex;
+      justify-content: center;
+      margin: 15px;
+      gap: 20px;
+    }
+
+    .label {
+      background-color: #d3d3d3;
+      padding: 10px;
+      width: 120px;
+      border-radius: 8px;
+      font-weight: bold;
+    }
+
+    .input {
+      padding: 10px;
+      width: 250px;
+      border-radius: 5px;
+      border: none;
+    }
+
+    .btn {
+      padding: 10px 30px;
+      margin: 20px;
+      border-radius: 10px;
+      border: none;
+      background-color: #d3d3d3;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .btn:hover {
+      background-color: #c0c0c0;
+    }
+  </style>
+
+</head>
+
+<body>
+
+  <div class="header">
+    Event Management System - Register
+  </div>
+
+  <!-- Role Select -->
+  <div class="container">
+    <select id="role" onchange="showForm()" class="input">
+      <option value="">Select Role</option>
+      <option value="admin">Admin</option>
+      <option value="vendor">Vendor</option>
+      <option value="user">User</option>
+    </select>
+  </div>
+
+  <!-- 🔵 ADMIN FORM -->
+  <form action="/register" method="POST" id="adminForm" class="container" style="display:none;">
+    
+    <input type="hidden" name="role" value="admin">
+
+    <div class="row">
+      <div class="label">Username</div>
+      <input type="text" name="username" class="input" required>
+    </div>
+
+    <div class="row">
+      <div class="label">Email</div>
+      <input type="email" name="email" class="input" required>
+    </div>
+
+    <div class="row">
+      <div class="label">Password</div>
+      <input type="password" name="password" class="input" required>
+    </div>
+
+    <div class="row">
+      <div class="label">Category</div>
+      <select name="category" class="input" required>
+        <option value="">Select</option>
+        <option value="decoration">Decoration</option>
+        <option value="florist">Florist</option>
+        <option value="catering">Catering</option>
+      </select>
+    </div>
+
+    <button type="submit" class="btn">Register</button>
+  </form>
+
+  <!-- 🟢 USER/VENDOR FORM -->
+  <form action="/register" method="POST" id="userForm" class="container" style="display:none;">
+    
+    <input type="hidden" name="role" id="userRole">
+
+    <div class="row">
+      <div class="label">Username</div>
+      <input type="text" name="username" class="input" required>
+    </div>
+
+    <div class="row">
+      <div class="label">Email</div>
+      <input type="email" name="email" class="input" required>
+    </div>
+
+    <div class="row">
+      <div class="label">Password</div>
+      <input type="password" name="password" class="input" required>
+    </div>
+
+    <button type="submit" class="btn">Register</button>
+  </form>
+
+  <script>
+    function showForm() {
+      const role = document.getElementById("role").value;
+
+      document.getElementById("adminForm").style.display = "none";
+      document.getElementById("userForm").style.display = "none";
+
+      if (role === "admin") {
+        document.getElementById("adminForm").style.display = "block";
+      } else if (role === "vendor" || role === "user") {
+        document.getElementById("userForm").style.display = "block";
+        document.getElementById("userRole").value = role;
+      }
+    }
+  </script>
+
+</body>
+</html>

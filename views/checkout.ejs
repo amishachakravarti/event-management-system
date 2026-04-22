@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Checkout</title>
+
+  <style>
+    body {
+      background-color: #bfbfbf;
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      text-align: center;
+    }
+
+    .container {
+      margin-top: 40px;
+    }
+
+    .box {
+      background-color: #4f75b5;
+      color: white;
+      padding: 10px;
+      width: 200px;
+      margin: 10px auto;
+      border-radius: 5px;
+      font-weight: bold;
+    }
+
+    .small-box {
+      width: 120px;
+      padding: 8px;
+      font-size: 14px;
+    }
+
+    .row {
+      display: flex;
+      justify-content: center;
+      gap: 120px;
+      margin: 20px 0;
+    }
+
+    input, select {
+      width: 200px;
+      padding: 10px;
+      border-radius: 10px;
+      border: none;
+      outline: none;
+      text-align: center;
+      font-size: 14px;
+    }
+
+    .btn {
+      margin-top: 30px;
+      padding: 12px 40px;
+      border-radius: 10px;
+      border: none;
+      background-color: #4f75b5;
+      color: white;
+      font-size: 16px;
+      cursor: pointer;
+      box-shadow: 2px 2px 5px rgba(0,0,0,0.3);
+    }
+
+    .btn:hover {
+      background-color: #3d5f9c;
+    }
+
+  </style>
+</head>
+
+<body>
+
+<div class="container">
+
+  <!-- TOP BOX -->
+  <div class="box">Item</div>
+
+  <!-- SMALL DETAILS BOX -->
+  <div class="box small-box">Details</div>
+
+  <!-- FORM -->
+  <form action="/checkout" method="POST">
+
+    <!-- ROW 1 -->
+    <div class="row">
+      <input type="text" name="name" placeholder="Name" required>
+      <input type="text" name="number" placeholder="Number" required>
+    </div>
+
+    <!-- ROW 2 -->
+    <div class="row">
+      <input type="email" name="email" placeholder="E-mail" required>
+
+      <select name="payment">
+        <option>Payment Method</option>
+        <option>Cash on Delivery</option>
+        <option>UPI</option>
+        <option>Card</option>
+      </select>
+    </div>
+
+    <!-- ROW 3 -->
+    <div class="row">
+      <input type="text" name="address" placeholder="Address" required>
+      <input type="text" name="state" placeholder="State" required>
+    </div>
+
+    <!-- ROW 4 -->
+    <div class="row">
+      <input type="text" name="city" placeholder="City" required>
+      <input type="text" name="pincode" placeholder="Pin Code" required>
+    </div>
+
+    <!-- BUTTON -->
+    <button class="btn">Order Now</button>
+
+  </form>
+
+</div>
+
+</body>
+</html>

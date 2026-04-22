@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Order Status</title>
+
+  <style>
+    body {
+      background-color: #bfbfbf;
+      font-family: Arial;
+      text-align: center;
+      margin: 0;
+    }
+
+    .top {
+      display: flex;
+      justify-content: space-between;
+      padding: 20px;
+    }
+
+    .btn {
+      padding: 10px 25px;
+      background-color: #4f75b5;
+      color: white;
+      border-radius: 10px;
+      text-decoration: none;
+    }
+
+    .header {
+      background-color: #4f75b5;
+      color: white;
+      padding: 12px;
+      width: 300px;
+      margin: 0 auto;
+      border-radius: 8px;
+      font-size: 18px;
+    }
+
+    .row {
+      display: flex;
+      justify-content: center;
+      gap: 60px;
+      margin: 30px;
+    }
+
+    .box {
+      background-color: #4f75b5;
+      color: white;
+      padding: 15px;
+      width: 150px;
+      border-radius: 10px;
+    }
+
+  </style>
+</head>
+
+<body>
+
+<!-- TOP NAV -->
+<div class="top">
+  <a href="/user" class="btn">Home</a>
+  <a href="/logout" class="btn">LogOut</a>
+</div>
+
+<!-- HEADER -->
+<div class="header">User Order Status</div>
+
+<!-- HEADINGS -->
+<div class="row">
+  <div class="box">Name</div>
+  <div class="box">E-mail</div>
+  <div class="box">Address</div>
+  <div class="box">Status</div>
+</div>
+
+<!-- DATA -->
+ <% if(orders.length === 0){ %>
+  <h3>No Orders Yet</h3>
+<% } %>
+<% orders.forEach(o => { %>
+  <div class="row">
+    <div class="box"><%= o.name %></div>
+    <div class="box"><%= o.email %></div>
+    <div class="box"><%= o.address %></div>
+    <div class="box"><%= o.status %></div>
+  </div>
+   <div class="row">
+    <div class="box" style="width: 400px;">
+      <% o.items.forEach(item => { %>
+        <p>
+          <%= item.name %> - ₹<%= item.price %> x <%= item.quantity %>
+        </p>
+      <% }) %>
+    </div>
+  </div>
+<% }) %>
+
+</body>
+</html>

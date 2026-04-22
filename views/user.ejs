@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>User Dashboard</title>
+
+  <style>
+    body {
+      background-color: #bfbfbf;
+      font-family: Arial, sans-serif;
+      text-align: center;
+      margin: 0;
+      padding: 0;
+    }
+
+    .header {
+      background-color: #4f75b5;
+      color: white;
+      padding: 15px;
+      font-size: 20px;
+      margin: 20px;
+      border-radius: 5px;
+    }
+
+    .container {
+      margin-top: 60px;
+    }
+
+    .btn-container {
+      display: flex;
+      justify-content: center;
+      gap: 60px;
+      margin-bottom: 60px;
+    }
+
+    .btn {
+      background-color: #4f75b5;
+      color: white;
+      padding: 20px 40px;
+      border-radius: 12px;
+      text-decoration: none;
+      font-size: 16px;
+      box-shadow: 2px 2px 5px rgba(0,0,0,0.3);
+    }
+
+    .btn:hover {
+      background-color: #3d5f96;
+    }
+
+    .logout {
+      margin-top: 40px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="header">
+    WELCOME <%= currentUser.username.toUpperCase() %>
+  </div>
+
+  <div class="container">
+
+    <div class="btn-container">
+      <a href="/vendors" class="btn">Vendor</a>
+      <a href="/cart" class="btn">Cart</a>
+      <a href="#" class="btn">Guest List</a>
+      <a href="/orders" class="btn">Order Status</a>
+    </div>
+
+    <div class="logout">
+      <a href="/logout" class="btn">LogOut</a>
+    </div>
+
+  </div>
+
+</body>
+</html>

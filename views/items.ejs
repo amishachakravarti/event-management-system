@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Your Items</title>
+
+  <style>
+    body {
+      background-color: #4f75b5;
+      font-family: Arial;
+      text-align: center;
+    }
+
+    .header {
+      background-color: #d3d3d3;
+      padding: 20px;
+      margin: 20px auto;
+      width: 70%;
+      border-radius: 5px;
+      font-size: 20px;
+    }
+
+    .container {
+      margin-top: 40px;
+    }
+
+    .item {
+      background-color: #d3d3d3;
+      margin: 15px auto;
+      padding: 15px;
+      width: 60%;
+      border-radius: 8px;
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+    }
+
+    img {
+      width: 80px;
+      border-radius: 5px;
+    }
+
+    .btn {
+      padding: 8px 15px;
+      border-radius: 5px;
+      border: none;
+      cursor: pointer;
+    }
+
+  </style>
+</head>
+
+<body>
+
+  <div class="header">
+    Your Items - <%= currentUser.username %>
+  </div>
+
+  <div class="container">
+
+    <% if(products.length === 0){ %>
+      <h3>No products added yet ❌</h3>
+    <% } %>
+
+    <% products.forEach(p => { %>
+      <div class="item">
+        <img src="<%= p.image %>">
+        <div><b><%= p.name %></b></div>
+        <div>₹ <%= p.price %></div>
+
+        <form action="/vendor/delete/<%= p._id %>" method="POST">
+          <button class="btn">Delete</button>
+        </form>
+      </div>
+    <% }) %>
+
+  </div>
+
+</body>
+</html>

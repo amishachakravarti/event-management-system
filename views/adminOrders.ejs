@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Admin Orders</title>
+
+  <style>
+    body {
+      background-color: #bfbfbf;
+      font-family: Arial;
+      text-align: center;
+      margin: 0;
+    }
+
+    .top {
+      display: flex;
+      justify-content: space-between;
+      padding: 20px;
+    }
+
+    .btn {
+      padding: 10px 20px;
+      border: 2px solid green;
+      border-radius: 8px;
+      text-decoration: none;
+      color: black;
+      background: white;
+    }
+
+    .header {
+      background-color: #4f75b5;
+      color: white;
+      padding: 10px;
+      width: 300px;
+      margin: 20px auto;
+      border-radius: 5px;
+    }
+
+    .row {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      margin: 10px;
+      flex-wrap: wrap;
+    }
+
+    .box {
+      background-color: #4f75b5;
+      color: white;
+      padding: 10px;
+      width: 150px;
+      border-radius: 8px;
+    }
+
+    select {
+      padding: 5px;
+      border-radius: 5px;
+    }
+
+    button {
+      margin-top: 5px;
+      padding: 5px 10px;
+      border-radius: 5px;
+      border: none;
+      cursor: pointer;
+    }
+  </style>
+</head>
+
+<body>
+
+<!-- TOP NAV -->
+<div class="top">
+  <a href="/admin" class="btn">Home</a>
+  <a href="/logout" class="btn">Logout</a>
+</div>
+
+<!-- HEADER -->
+<div class="header">Admin Order Management</div>
+
+<!-- HEADINGS -->
+<div class="row">
+  <div class="box">Name</div>
+  <div class="box">Email</div>
+  <div class="box">Address</div>
+  <div class="box">Status</div>
+  <div class="box">Update</div>
+</div>
+
+<!-- DATA -->
+<% orders.forEach(o => { %>
+
+  <div class="row">
+    <div class="box"><%= o.name %></div>
+    <div class="box"><%= o.email %></div>
+    <div class="box"><%= o.address %></div>
+    <div class="box"><%= o.status %></div>
+
+    <!-- UPDATE STATUS -->
+    <form action="/admin/order/update/<%= o._id %>" method="POST">
+      <select name="status">
+        <option>Pending</option>
+        <option>Shipped</option>
+        <option>Delivered</option>
+      </select>
+      <button>Update</button>
+    </form>
+  </div>
+
+<% }) %>
+
+</body>
+</html>

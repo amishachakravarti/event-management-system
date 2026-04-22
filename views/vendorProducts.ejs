@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Product Status</title>
+
+  <style>
+    body {
+      background-color: #bfbfbf;
+      font-family: Arial;
+      text-align: center;
+      margin: 0;
+    }
+
+    .top {
+      display: flex;
+      justify-content: space-between;
+      padding: 20px;
+    }
+
+    .btn {
+      background-color: #4f75b5;
+      color: white;
+      padding: 10px 20px;
+      text-decoration: none;
+      border-radius: 8px;
+    }
+
+    .header {
+      background-color: #4f75b5;
+      color: white;
+      padding: 10px;
+      width: 250px;
+      margin: 20px auto;
+      border-radius: 5px;
+    }
+
+    .row {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      margin: 10px;
+      flex-wrap: wrap;
+    }
+
+    .box {
+      background-color: #4f75b5;
+      color: white;
+      padding: 10px;
+      width: 140px;
+      border-radius: 8px;
+    }
+
+    img {
+      width: 60px;
+      height: 60px;
+      border-radius: 5px;
+    }
+  </style>
+</head>
+
+<body>
+
+<!-- TOP -->
+<div class="top">
+  <a href="/vendor" class="btn">Home</a>
+  <a href="/logout" class="btn">Logout</a>
+</div>
+
+<!-- HEADER -->
+<div class="header">Product Status</div>
+
+<!-- HEADINGS -->
+<div class="row">
+  <div class="box">Name</div>
+  <div class="box">Price</div>
+  <div class="box">Image</div>
+  <div class="box">Status</div>
+  <div class="box">Update</div>
+  <div class="box">Delete</div>
+</div>
+
+<!-- DATA -->
+<% products.forEach(p => { %>
+
+  <div class="row">
+    <div class="box"><%= p.name %></div>
+    <div class="box">₹ <%= p.price %></div>
+    <div class="box">
+      <img src="<%= p.image %>">
+    </div>
+    <div class="box"><%= p.status || "Active" %></div>
+
+    <!-- UPDATE -->
+    <form action="/vendor/product/update/<%= p._id %>" method="POST">
+      <button class="btn">Update</button>
+    </form>
+
+    <!-- DELETE -->
+    <form action="/vendor/product/delete/<%= p._id %>" method="POST">
+      <button class="btn">Delete</button>
+    </form>
+  </div>
+
+<% }) %>
+
+</body>
+</html>

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Vendor Dashboard</title>
+
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background-color: #4f75b5;
+      font-family: Arial, sans-serif;
+      text-align: center;
+    }
+
+    .container {
+      padding-top: 50px;
+    }
+
+    .header {
+      background-color: #d3d3d3;
+      padding: 20px;
+      margin: 0 auto;
+      width: 70%;
+      font-size: 20px;
+      font-weight: bold;
+      border-radius: 5px;
+    }
+
+    .btn-container {
+      margin-top: 50px;
+      display: flex;
+      justify-content: center;
+      gap: 40px;
+    }
+
+    .btn {
+      background-color: #d3d3d3;
+      padding: 15px 30px;
+      border-radius: 8px;
+      text-decoration: none;
+      color: black;
+      font-size: 16px;
+      font-weight: bold;
+      box-shadow: 2px 2px 5px rgba(0,0,0,0.3);
+    }
+
+    .btn:hover {
+      background-color: #c0c0c0;
+    }
+  </style>
+
+</head>
+<body>
+
+  <div class="container">
+
+    <div class="header">
+      Welcome <%= currentUser.username %>
+    </div>
+
+    <div class="btn-container">
+      <a href="/vendor/items" class="btn">Your Item</a>
+      <a href="/vendor/add" class="btn">Add New Item</a>
+      <a href="#" class="btn">Transaction</a>
+      <a href="/logout" class="btn">LogOut</a>
+    </div>
+
+  </div>
+
+</body>
+</html>
