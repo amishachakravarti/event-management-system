@@ -10,7 +10,7 @@ const LocalStrategy = require("passport-local");
 const User = require("./models/User");
 const userRoutes = require("./routes/User");
 
-require("dotenv").config();
+// require("dotenv").config();
 
 // middleware
 app.use(express.urlencoded({ extended: true }));
